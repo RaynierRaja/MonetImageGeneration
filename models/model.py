@@ -39,7 +39,6 @@ class Generator(nn.Module):
 
         # Apply tanh to bring the output to [-1, 1], then normalize to [0, 1]
         x = torch.tanh(x)  # Output is now in range [-1, 1]
-        x = (x + 1) / 2  # Normalize to [0, 1]
 
         return x
 

@@ -10,5 +10,5 @@ def get_data_loaders(dataset, batch_size, shuffle):
 
 def imshow(img):
     img = torch.permute(img,(1,2,0))
-    plt.imshow(img)
+    plt.imshow(img,vmin=0,vmax=255)
     plt.show()

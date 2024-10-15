@@ -18,5 +18,5 @@ class ImageDataset(Dataset):
         filepath = os.path.join(self.path_dir,filename)
         img = read_image(filepath)
         img = img.float()
-        img = img/255 
+        img = (img / 127.5) - 1 # Normalize image from -1 to 1
         return img

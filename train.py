@@ -5,10 +5,10 @@ from training import generator_loss, discriminator_loss, cycle_consistency_loss,
 from dataset import imshow, ImageDataset, get_data_loaders
 
 monet_datset = ImageDataset(path_dir="D:\\Personal Projects\AIProjects\\MonetImageGeneration\\dataset\\monet_jpg")
-monet_dataloader = get_data_loaders(dataset=monet_datset,shuffle=True,batch_size=8)
+monet_dataloader = get_data_loaders(dataset=monet_datset,shuffle=False,batch_size=8)
 
 photo_datset = ImageDataset(path_dir="D:\\Personal Projects\AIProjects\\MonetImageGeneration\\dataset\\photo_jpg")
-photo_dataloader = get_data_loaders(dataset=photo_datset,shuffle=True,batch_size=8)
+photo_dataloader = get_data_loaders(dataset=photo_datset,shuffle=False,batch_size=8)
 
 # Check if a GPU is available and set the device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -33,7 +33,7 @@ photo2monet_optimizer = torch.optim.Adam(photo2monet.parameters(), lr=0.0002, be
 monet_classifier_optimizer = torch.optim.Adam(monet_classifier.parameters(), lr=0.0002, betas=(0.5, 0.999))
 photo_classifier_optimizer = torch.optim.Adam(photo_classifier.parameters(), lr=0.0002, betas=(0.5, 0.999))
 
-epoch = 10
+epoch = 40
 for i in range(epoch):
     # Sample input Data
     monet_img = next(iter(monet_dataloader)).to(device)
